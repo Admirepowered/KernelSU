@@ -75,6 +75,7 @@ jobs:
         with:
           files: |
             manager/*.apk
+            *-lkm/*.ko
             AnyKernel3-*.zip
             boot-images-*/Image-*/*.img.gz
             kernel-WSA*.zip

@@ -217,7 +217,7 @@ jobs:
           mkdir output
           if [ "${{ inputs.build_lkm}}" = "true" ]; then 
             llvm-strip-15 --strip-debug $OUTDIR/kernelsu.ko
-            cp $OUTDIR/kernelsu.ko ./output/
+            mv $OUTDIR/kernelsu.ko ./output/${{ inputs.version }}_kernelsu.ko
           else
             cp $OUTDIR/Image ./output/
             cp $OUTDIR/Image.lz4 ./output/
@@ -244,5 +244,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ inputs.build_lkm == true }}
         with:
-          name: ${{ inputs.version }}_kernelsu.ko
-          path: ./output/kernelsu.ko
+          name: ${{ inputs.version }}-lkm
+          path: ./output/*_kernelsu.ko
